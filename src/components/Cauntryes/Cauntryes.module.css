@@ -1,0 +1,21 @@
+.Card {
+    border: 1px solid hsla(0, 0%, 100%, 0.3);
+    border-radius: 4px;
+    background-color: #1e1e1e;
+    margin: 10px;
+    overflow: auto;
+    padding: 10px;
+    height: 60vh;
+    margin-top: -10px;
+    border-top: none;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+ 
+
+.Card::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}

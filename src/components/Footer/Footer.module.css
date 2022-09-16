@@ -1,0 +1,15 @@
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    background-color: #1e1e1e;
+    padding: 15px; 
+    color: #fff;
+    border-top: 1px solid #fff;
+}
+
+.footer__link{
+    color: #fff;
+    margin-left: 5px; 
+}
