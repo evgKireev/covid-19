@@ -6,7 +6,7 @@ function CardCountry({ onChange, onInput }) {
   return (
     <div className={styles.Card}>
       <div style={{ display: 'flex' , justifyContent: 'space-between' }}>
-        <SelectedDate />
+        <SelectedDate onChange={onChange}/>
         <SelectedStat onChange={onChange} />
       </div>
       <div>

@@ -7,13 +7,16 @@ import CardCountry from './components/CardCountry/CardCountry';
 import Cauntryes from './components/Cauntryes/Cauntryes';
 
 const API_URL = 'https://disease.sh/v3/covid-19/countries';
-const API_URL_ALL ='https://disease.sh/v3/covid-19/all'
+const API_URL_ALL = 'https://disease.sh/v3/covid-19/all';
 
 function App() {
-  const [dates, setDates] = useState([]);
-  const [dataAll, setDataAll] = useState({})
+  let [dates, setDates] = useState([]);
+  const [dataAll, setDataAll] = useState({});
   const [value, setValue] = useState('1');
   const [valueInput, setValueInput] = useState('');
+  const [select, setSelect] = useState('All');
+  const [ff, setFf] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -40,14 +43,41 @@ function App() {
     fetchData();
   }, []);
 
+  const f = (index) => {
+    setFf(dates.filter((_, idx) => idx === index));
+  };
+
   return (
     <div className="App">
       <Header />
       <main className="Main">
-        <div style={{flexBasis : 300}}>
-          <CardCases dataAll = {...dataAll} value={value} />
-          <CardCountry onChange={(e) => setValue(e.target.value)} onInput={(e)=>setValueInput(e.target.value.toLocaleLowerCase().trim())} />
-          <Cauntryes datas={dates} value={value} valueInput={valueInput} />
+        <div style={{ flexBasis: 300 }}>
+          <CardCases
+            ff={ff}
+            onClick={f}
+            dates={dates}
+            {...dataAll}
+            value={value}
+            cas="Cases"
+            dea="Deaths"
+            recov="Recovered"
+          />
+          <CardCountry
+            onChange={(e) => {
+              setValue(e.target.value);
+              setSelect(e.target.value);
+            }}
+            onInput={(e) =>
+              setValueInput(e.target.value.toLocaleLowerCase().trim())
+            }
+          />
+          <Cauntryes
+            f={f}
+            datas={dates}
+            value={value}
+            valueInput={valueInput}
+            select={select}
+          />
         </div>
       </main>
       <Footer />

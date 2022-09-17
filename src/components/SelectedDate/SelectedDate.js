@@ -1,9 +1,9 @@
 import styles from './SelectedDate.module.css';
-function SelectedDate() {
+function SelectedDate({onChange}) {
   return (
-    <select className={styles.select}>
-      <option value="1">All</option>
-      <option value="2">Today</option>
+    <select className={styles.select} onChange = {onChange}>
+      <option value="All">All</option>
+      <option value="Today">Today</option>
     </select>
   );
 }
